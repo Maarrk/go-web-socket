@@ -45,7 +45,7 @@ func NewClient(handler Event, option *ClientOption) (*Conn, *http.Response, erro
 	// 	return nil, nil, fmt.Errorf("gws: unsupported protocol in URL %s", option.Addr)
 	// }
 
-	var tlsEnabled = URL.Scheme == "wss"
+	var tlsEnabled = URL.Scheme == "wss" || URL.Scheme == "https"
 	dialer, err := option.NewDialer()
 	if err != nil {
 		return nil, nil, err
