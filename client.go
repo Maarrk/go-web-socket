@@ -42,7 +42,7 @@ func NewClient(handler Event, option *ClientOption) (*Conn, *http.Response, erro
 		return nil, nil, err
 	}
 	if URL.Scheme != "ws" && URL.Scheme != "wss" {
-		return nil, nil, ErrUnsupportedProtocol
+		return nil, nil, fmt.Errorf("gws: unsupported protocol in URL %s", option.Addr)
 	}
 
 	var tlsEnabled = URL.Scheme == "wss"
